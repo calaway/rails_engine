@@ -67,4 +67,16 @@ RSpec.describe "Invoice item record API" do
     expect(response_invoice_item["unit_price"]).to eq(333)
     expect(response_invoice_item["invoice_id"]).to eq(456)
   end
+
+  it "finds invoice item by item id" do
+    create(:invoice_item)
+    create(:invoice_item, item_id: 123, invoice_id: 456)
+    create(:invoice_item, item_id: 123, invoice_id: 123)
+
+    get "/api/v1/invoice_items/find_all?item_id=123"
+    response_invoice_items = JSON.parse(response.body)
+
+    expect(response_invoice_items.first["invoice_id"]).to eq(456)
+    expect(response_invoice_items.last["invoice_id"]).to eq(123)
+  end
 end
