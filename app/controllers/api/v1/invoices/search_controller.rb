@@ -7,11 +7,6 @@ class Api::V1::Invoices::SearchController < ApplicationController
     else
       render json: Invoice.find_by("#{search_key} = ?", search_value)
     end
-    # if params[:customer_id]
-    #   render json: Invoice.find_by(customer_id: params[:customer_id])
-    # elsif params[:merchant_id]
-    #   render json: Invoice.find_by(merchant_id: params[:merchant_id])
-    # end
   end
 
   def index
