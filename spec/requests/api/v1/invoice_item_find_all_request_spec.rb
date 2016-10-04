@@ -2,15 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "Invoice item find all API" do
   it "finds many invoice items by item id" do
+    item = create(:item)
     create(:invoice_item)
-    create(:invoice_item, item_id: 123, invoice_id: 456)
-    create(:invoice_item, item_id: 123, invoice_id: 123)
+    create(:invoice_item, item: item)
+    create(:invoice_item, item: item)
 
-    get "/api/v1/invoice_items/find_all?item_id=123"
+    get "/api/v1/invoice_items/find_all?item_id=#{item.id}"
     response_invoice_items = JSON.parse(response.body)
 
-    expect(response_invoice_items.first["invoice_id"]).to eq(456)
-    expect(response_invoice_items.last["invoice_id"]).to eq(123)
+    expect(response_invoice_items.count).to eq(2)
   end
 
   it "finds many invoice items by invoice id" do
