@@ -11,7 +11,7 @@ describe "Transactions API" do
     expect(transactions.count).to eq(2)
   end
 
-  xit "returns a single transaction" do
+  it "returns a single transaction" do
     id = create(:transaction).id
 
     get "/api/v1/transactions/#{id}"
