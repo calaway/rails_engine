@@ -5,13 +5,13 @@ RSpec.describe "Invoice record API" do
     create_list(:invoice, 3)
 
     get '/api/v1/invoices'
-    merchants = JSON.parse(response.body)
+    invoices = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(merchants.count).to eq(3)
+    expect(invoices.count).to eq(3)
   end
 
-  it "returns one merchant" do
+  it "returns one invoice" do
     invoice = create(:invoice, customer_id: 123, merchant_id: 123, status: "This is a test")
 
     get "/api/v1/invoices/#{invoice.id}"
