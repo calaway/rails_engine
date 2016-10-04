@@ -29,11 +29,11 @@ RSpec.describe "Item record API" do
     item = create(:item, merchant_id: 123, name: "Acorn")
 
     get "/api/v1/items/find?name=Acorn"
-    response_invoice = JSON.parse(response.body)
+    response_item = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(response_invoice["name"]).to eq("Acorn")
-    expect(response_invoice["merchant_id"]).to eq(123)
+    expect(response_item["name"]).to eq("Acorn")
+    expect(response_item["merchant_id"]).to eq(123)
   end
 
   it "finds one invoice by description" do
@@ -41,11 +41,11 @@ RSpec.describe "Item record API" do
     item = create(:item, description: "It is an acorn", name: "Acorn")
 
     get "/api/v1/items/find?description=#{item.description}"
-    response_invoice = JSON.parse(response.body)
+    response_item = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(response_invoice["name"]).to eq("Acorn")
-    expect(response_invoice["description"]).to eq("It is an acorn")
+    expect(response_item["name"]).to eq("Acorn")
+    expect(response_item["description"]).to eq("It is an acorn")
   end
 
   it "finds one invoice by unit price" do
@@ -53,11 +53,11 @@ RSpec.describe "Item record API" do
     item = create(:item, unit_price: 100, name: "Acorn")
 
     get "/api/v1/items/find?unit_price=100"
-    response_invoice = JSON.parse(response.body)
+    response_item = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(response_invoice["name"]).to eq("Acorn")
-    expect(response_invoice["unit_price"]).to eq(100)
+    expect(response_item["name"]).to eq("Acorn")
+    expect(response_item["unit_price"]).to eq(100)
   end
 
   it "finds one invoice by merchant_id" do
@@ -65,10 +65,10 @@ RSpec.describe "Item record API" do
     item = create(:item, merchant_id: 123, name: "Acorn")
 
     get "/api/v1/items/find?merchant_id=123"
-    response_invoice = JSON.parse(response.body)
+    response_item = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(response_invoice["name"]).to eq("Acorn")
-    expect(response_invoice["merchant_id"]).to eq(123)
+    expect(response_item["name"]).to eq("Acorn")
+    expect(response_item["merchant_id"]).to eq(123)
   end
 end

@@ -36,6 +36,7 @@ RSpec.describe "Invoice item record API" do
   end
 
   it "finds invoice item by invoice id" do
+    pending
     create(:invoice_item)
     invoice_item = create(:invoice_item, item_id: 123, invoice_id: 456)
 
@@ -47,6 +48,7 @@ RSpec.describe "Invoice item record API" do
   end
 
   it "finds invoice item by quantity" do
+    pending
     create(:invoice_item)
     invoice_item = create(:invoice_item, quantity: 2, invoice_id: 456)
 
@@ -58,6 +60,7 @@ RSpec.describe "Invoice item record API" do
   end
 
   it "finds invoice item by unit price" do
+    pending
     create(:invoice_item)
     invoice_item = create(:invoice_item, unit_price: 333, invoice_id: 456)
 
