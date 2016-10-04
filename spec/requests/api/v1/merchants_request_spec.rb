@@ -15,9 +15,9 @@ describe "Merchants API" do
     id = create(:merchant, name: "Bob's Best Plumbing").id
 
     get "/api/v1/merchants/#{id}"
-    item = JSON.parse(response.body)
+    merchant = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(item["id"]).to eq(id)
+    expect(merchant["id"]).to eq(id)
   end
 end

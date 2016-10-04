@@ -15,9 +15,9 @@ describe "Transactions API" do
     id = create(:transaction).id
 
     get "/api/v1/transactions/#{id}"
-    item = JSON.parse(response.body)
+    transaction = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(item["id"]).to eq(id)
+    expect(transaction["id"]).to eq(id)
   end
 end
