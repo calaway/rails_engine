@@ -25,7 +25,7 @@ class Api::V1::Invoices::SearchController < ApplicationController
   end
 
   def random
-    render json: Invoice.limit(1).order('RANDOM()').first
+    render json: Invoice.random
   end
 
 private

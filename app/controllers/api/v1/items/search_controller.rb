@@ -29,7 +29,7 @@ class Api::V1::Items::SearchController < ApplicationController
   end
 
   def random
-    render json: Item.limit(1).order('RANDOM()').first
+    render json: Item.random
   end
 
 private
