@@ -13,7 +13,7 @@ RSpec.describe "Invoice item record API" do
 
   it "returns one invoice item" do
     pending
-    invoice_item = create(:invoice, item_id: 123, invoice_id: 123, quantity: 2, unit_price: 456)
+    invoice_item = create(:invoice_item, item_id: 123, invoice_id: 123, quantity: 2, unit_price: 456)
 
     get "/api/v1/invoice_items/#{invoice_item.id}"
     response_invoice = JSON.parse(response.body)
