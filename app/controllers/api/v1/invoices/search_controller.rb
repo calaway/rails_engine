@@ -3,9 +3,9 @@ class Api::V1::Invoices::SearchController < ApplicationController
     search_key = invoice_params.keys.first
     search_value = invoice_params.values.first
     if search_key == "status"
-      render json: Invoice.find_by("lower(#{search_key}) = ?", search_value.downcase)
+      render json: Invoice.find_by_params(search_key, search_value)
     else
-      render json: Invoice.find_by("#{search_key} = ?", search_value)
+      render json: Invoice.find_by_params(search_key, search_value)
     end
   end
 
@@ -13,9 +13,9 @@ class Api::V1::Invoices::SearchController < ApplicationController
     search_key = params.keys.first
     search_value = params.values.first
     if search_key == "status"
-      render json: Invoice.where("lower(#{search_key}) = ?", search_value.downcase)
+      render json: Invoice.where_by_params(search_key, search_value)
     else
-      render json: Invoice.where("#{search_key} = ?", search_value)
+      render json: Invoice.where_by_params(search_key, search_value)
     end
   end
 

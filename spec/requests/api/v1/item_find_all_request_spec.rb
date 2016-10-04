@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe "Item find all API" do
   it "finds many items by name" do
     create(:item)
-    item = create(:item, merchant_id: 123, name: "Acorn")
-    item = create(:item, merchant_id: 456, name: "Acorn")
+    create(:item, merchant_id: 123, name: "Acorn")
+    create(:item, merchant_id: 456, name: "Acorn")
 
-    get "/api/v1/items/find_all?name=acorn"
+    get "/api/v1/items/find_all?name=Acorn"
     response_items = JSON.parse(response.body)
 
     expect(response).to be_success
@@ -19,7 +19,7 @@ RSpec.describe "Item find all API" do
     item = create(:item, merchant_id: 123, description: "foofoo")
     item = create(:item, merchant_id: 456, description: "foofoo")
 
-    get "/api/v1/items/find_all?description=FOofOo"
+    get "/api/v1/items/find_all?description=foofoo"
     response_items = JSON.parse(response.body)
 
     expect(response).to be_success

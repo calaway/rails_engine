@@ -2,7 +2,7 @@ class Api::V1::InvoiceItems::SearchController < ApplicationController
   def show
     search_key = invoice_item_params.keys.first
     search_value = invoice_item_params.values.first
-    render json: InvoiceItem.find_by("#{search_key} = ?", search_value)
+    render json: InvoiceItem.find_by_params(search_key, search_value)
   end
 
   def index

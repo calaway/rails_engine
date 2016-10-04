@@ -3,20 +3,20 @@ class Api::V1::Items::SearchController < ApplicationController
     search_key = item_params.keys.first
     search_value = item_params.values.first
     if search_key == ("name" || "description")
-      render json: Item.find_by("lower(#{search_key}) = ?", search_value.downcase)
+      render json: Item.find_by_params(search_key, search_value)
     else
-      render json: Item.find_by("#{search_key} = ?", search_value)
+      render json: Item.find_by_params(search_key, search_value)
     end
   end
 
   def index
     search_key = item_params.keys.first
-    search_value = item_params.values.first.downcase
-    if search_key == ("name" || "description")
-      render json: Item.where("lower(#{search_key}) = ?", search_value)
-    else
-      render json: Item.where("#{search_key} = ?", search_value)
-    end
+    search_value = item_params.values.first
+    # if search_key == ("name" || "description")
+      render json: Item.where_by_params(search_key, search_value)
+    # else
+      # render json: Item.where_by_params(search_key, search_value)
+    # end
   end
 
   def random
