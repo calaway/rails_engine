@@ -4,7 +4,7 @@ RSpec.describe "Invoice item record API" do
   it "returns a list of invoice items" do
     create_list(:invoice_item, 3)
 
-    get '/api/v1/invoice_items'
+    get api_v1_invoice_items_path
     invoice_items = JSON.parse(response.body)
 
     expect(response).to be_success
@@ -14,7 +14,7 @@ RSpec.describe "Invoice item record API" do
   it "returns one invoice item" do
     invoice_item = create(:invoice_item, item_id: 123, invoice_id: 123, quantity: 2, unit_price: 456)
 
-    get "/api/v1/invoice_items/#{invoice_item.id}"
+    get api_v1_invoice_item_path(invoice_item)
     response_invoice = JSON.parse(response.body)
 
     expect(response).to be_success
