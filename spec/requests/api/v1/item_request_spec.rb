@@ -37,11 +37,10 @@ RSpec.describe "Item record API" do
   end
 
   it "finds one invoice by description" do
-    pending
     create(:item)
-    item = create(:item, description: "description", name: "Acorn")
+    item = create(:item, description: "It is an acorn", name: "Acorn")
 
-    get "/api/v1/items/find?description=description"
+    get "/api/v1/items/find?description=#{item.description}"
     response_invoice = JSON.parse(response.body)
 
     expect(response).to be_success
@@ -50,7 +49,6 @@ RSpec.describe "Item record API" do
   end
 
   it "finds one invoice by unit price" do
-    pending
     create(:item)
     item = create(:item, unit_price: 100, name: "Acorn")
 
@@ -63,7 +61,6 @@ RSpec.describe "Item record API" do
   end
 
   it "finds one invoice by merchant_id" do
-    pending
     create(:item)
     item = create(:item, merchant_id: 123, name: "Acorn")
 
