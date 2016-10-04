@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       namespace :items do
         get '/find', to: "search#show"
         get '/find_all', to: "search#index"
+        get '/random', to: "search#random"
       end
       namespace :invoice_items do
         get '/find', to: "search#show"

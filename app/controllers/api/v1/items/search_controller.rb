@@ -28,6 +28,10 @@ class Api::V1::Items::SearchController < ApplicationController
     end
   end
 
+  def random
+    render json: Item.limit(1).order('RANDOM()').first
+  end
+
 private
   def item_params
     params.permit(:id, :name, :description, :unit_price, :merchant_id)
