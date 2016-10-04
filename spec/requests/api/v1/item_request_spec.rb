@@ -12,7 +12,6 @@ RSpec.describe "Item record API" do
   end
 
   it "returns one item" do
-    pending
     item = create(:item, name: "Dead Dove", description: "Do not eat!", unit_price: 200, merchant_id: 456)
 
     get "/api/v1/items/#{item.id}"
