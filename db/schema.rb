@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003235814) do
+ActiveRecord::Schema.define(version: 20161004013630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "invoice_items", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "invoice_id"
+    t.integer  "quantity"
+    t.integer  "unit_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.integer  "merchant_id"
+    t.string   "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "unit_price"
+    t.integer  "merchant_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "merchants", force: :cascade do |t|
     t.string   "name"
@@ -21,4 +47,14 @@ ActiveRecord::Schema.define(version: 20161003235814) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "invoice_id"
+    t.datetime "credit_card_expiration_date"
+    t.string   "result"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["invoice_id"], name: "index_transactions_on_invoice_id", using: :btree
+  end
+
+  add_foreign_key "transactions", "invoices"
 end
