@@ -20,6 +20,10 @@ class Api::V1::InvoiceItems::SearchController < ApplicationController
     render json: InvoiceItem.where("#{search_key} = ?", search_value)
   end
 
+  def random
+    render json: InvoiceItem.limit(1).order('RANDOM()').first
+  end
+
 private
   def invoice_item_params
     params.permit(:id, :item_id, :invoice_id, :quantity, :unit_price)
