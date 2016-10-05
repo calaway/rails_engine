@@ -13,6 +13,6 @@ RSpec.describe "Merchant invoices API" do
     invoices = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(items.count).to eq(3)
+    expect(invoices.count).to eq(3)
   end
 end
