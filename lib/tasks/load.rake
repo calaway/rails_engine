@@ -2,6 +2,14 @@ require 'csv'
 
 namespace :load do
   desc "TODO"
+  task all: [:merchants,
+             :customers,
+             :items,
+             :invoices,
+             :transactions,
+             :invoice_items]
+
+  desc "TODO"
   task items: :environment do
     CSV.foreach('./data/items.csv', headers: true) do |row|
       Item.create(row.to_h)
