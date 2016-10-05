@@ -1,14 +1,10 @@
 class Api::V1::InvoiceItems::SearchController < ApplicationController
   def show
-    search_key = invoice_item_params.keys.first
-    search_value = invoice_item_params.values.first
-    render json: InvoiceItem.find_by_params(search_key, search_value)
+    render json: InvoiceItem.find_by(invoice_item_params)
   end
 
   def index
-    search_key = params.keys.first
-    search_value = params.values.first
-    render json: InvoiceItem.where("#{search_key} = ?", search_value)
+    render json: InvoiceItem.where(invoice_item_params)
   end
 
   def random
@@ -17,6 +13,6 @@ class Api::V1::InvoiceItems::SearchController < ApplicationController
 
 private
   def invoice_item_params
-    params.permit(:id, :item_id, :invoice_id, :quantity, :unit_price)
+    params.permit(:id, :item_id, :invoice_id, :quantity, :unit_price, :created_at, :updated_at)
   end
 end
