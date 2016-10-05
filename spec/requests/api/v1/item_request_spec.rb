@@ -20,7 +20,7 @@ RSpec.describe "Item record API" do
     expect(response).to be_success
     expect(response_item["name"]).to eq("Dead Dove")
     expect(response_item["description"]).to eq("Do not eat!")
-    expect(response_item["unit_price"]).to eq(200)
+    expect(response_item["unit_price"]).to eq("2.00")
     expect(response_item["merchant_id"]).to eq(item.merchant.id)
   end
 end
