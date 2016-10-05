@@ -12,15 +12,15 @@ RSpec.describe "Item record API" do
   end
 
   it "returns one item" do
-    item = create(:item, name: "Dead Dove", description: "Do not eat!", unit_price: 200, merchant_id: 456)
+    item = create(:item, name: "Dead Dove", description: "Do not eat!", unit_price: 200)
 
     get api_v1_item_path(item)
-    response_invoice = JSON.parse(response.body)
+    response_item = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(item.name).to eq("Dead Dove")
-    expect(item.description).to eq("Do not eat!")
-    expect(item.unit_price).to eq(200)
-    expect(item.merchant_id).to eq(456)
+    expect(response_item["name"]).to eq("Dead Dove")
+    expect(response_item["description"]).to eq("Do not eat!")
+    expect(response_item["unit_price"]).to eq(200)
+    expect(response_item["merchant_id"]).to eq(item.merchant.id)
   end
 end

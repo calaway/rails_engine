@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.describe "Item find API" do
   it "finds one item by name" do
     create(:item)
-    item = create(:item, merchant_id: 123, name: "Acorn")
+    item = create(:item, name: "Acorn")
 
     get "/api/v1/items/find?name=Acorn"
     response_item = JSON.parse(response.body)
 
     expect(response).to be_success
     expect(response_item["name"]).to eq("Acorn")
-    expect(response_item["merchant_id"]).to eq(123)
+    expect(response_item["merchant_id"]).to eq(item.merchant.id)
   end
 
   it "finds one item by description" do
@@ -39,13 +39,13 @@ RSpec.describe "Item find API" do
 
   it "finds one item by merchant_id" do
     create(:item)
-    item = create(:item, merchant_id: 123, name: "Acorn")
+    item = create(:item, name: "Acorn")
 
-    get "/api/v1/items/find?merchant_id=123"
+    get "/api/v1/items/find?merchant_id=#{item.merchant_id}"
     response_item = JSON.parse(response.body)
 
     expect(response).to be_success
     expect(response_item["name"]).to eq("Acorn")
-    expect(response_item["merchant_id"]).to eq(123)
+    expect(response_item["merchant_id"]).to eq(item.merchant_id)
   end
 end

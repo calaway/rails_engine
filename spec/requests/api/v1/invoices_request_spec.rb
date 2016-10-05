@@ -12,14 +12,14 @@ RSpec.describe "Invoice record API" do
   end
 
   it "returns one invoice" do
-    invoice = create(:invoice, customer_id: 123, merchant_id: 123, status: "This is a test")
+    invoice = create(:invoice, status: "This is a test")
 
     get api_v1_invoice_path(invoice)
     response_invoice = JSON.parse(response.body)
 
     expect(response).to be_success
     expect(response_invoice["status"]).to eq("This is a test")
-    expect(response_invoice["customer_id"]).to eq(123)
-    expect(response_invoice["merchant_id"]).to eq(123)
+    expect(response_invoice["customer_id"]).to eq(invoice.customer_id)
+    expect(response_invoice["merchant_id"]).to eq(invoice.merchant_id)
   end
 end
