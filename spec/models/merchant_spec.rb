@@ -6,21 +6,25 @@ RSpec.describe Merchant, type: :model do
     merchant_2 = create(:merchant, name: "Bluth Family Store")
     merchant_3 = create(:merchant, name: "Some Person's Shed")
 
-    3.times do
-      merchant_1.invoice_items.create(quantity: 2)
+    invoice_items_1 = create_list(:invoice_item, 3, quantity: 1)
+    invoice_items_2 = create_list(:invoice_item, 2, quantity: 20)
+    invoice_items_3 = create_list(:invoice_item, 1, quantity: 1)
+
+    invoice_items_1.each do |invoice_item|
+      invoice_item.invoice.update_attribute(:merchant_id, merchant_1.id)
     end
 
-    4.times do
-      merchant_2.invoice_items.create(quantity: 5)
+    invoice_items_2.each do |invoice_item|
+      invoice_item.invoice.update_attribute(:merchant_id, merchant_2.id)
     end
 
-    1.times do
-      merchant_3.invoice_items.create(quantity: 1)
+    invoice_items_3.each do |invoice_item|
+      invoice_item.invoice.update_attribute(:merchant_id, merchant_3.id)
     end
 
     top_2_merchants = Merchant.top_merchants(2)
 
-    expect(top_2_merchants.count).to eq(2)
+    expect(top_2_merchants.count.count).to eq(2)
     expect(top_2_merchants.first.name).to eq("Bluth Family Store")
     expect(top_2_merchants.last.name).to eq("A Good Store")
   end
