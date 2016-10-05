@@ -23,6 +23,27 @@ describe "Transactions find API" do
     expect(response_transaction["invoice_id"]).to eq(invoice_id)
   end
 
+  it "finds one transaction by credit_card_number" do
+    create(:transaction)
+    transaction = create(:transaction, credit_card_number: "4654405418249632")
+
+    get "/api/v1/transactions/find?credit_card_number=4654405418249632"
+    response_transaction = JSON.parse(response.body)
+
+    expect(response_transaction["id"]).to eq(transaction.id)
+  end
+
+  it "finds one transaction by result" do
+    cc = "4654405418249632"
+    create(:transaction, result: "failed")
+    create(:transaction, result: "success", credit_card_number: cc)
+
+    get "/api/v1/transactions/find?result=success"
+    response_transaction = JSON.parse(response.body)
+
+    expect(response_transaction["credit_card_number"]).to eq(cc)
+  end
+
   xit "finds one transaction by creation time" do
     create(:transaction)
     transaction = create(:transaction, credit_card_number: "4654405418249632")

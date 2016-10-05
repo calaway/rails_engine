@@ -8,8 +8,7 @@ RSpec.describe "Item find all API" do
     create(:item, name: "Acorn", merchant: merchant_1)
     create(:item, name: "Acorn", merchant: merchant_2)
 
-
-    get "/api/v1/items/find_all?name=acorn"
+    get "/api/v1/items/find_all?name=Acorn"
     response_items = JSON.parse(response.body)
 
     expect(response).to be_success
@@ -24,7 +23,7 @@ RSpec.describe "Item find all API" do
     item = create(:item, merchant: merchant_1, description: "foofoo")
     item = create(:item, merchant: merchant_2, description: "foofoo")
 
-    get "/api/v1/items/find_all?description=FOofOo"
+    get "/api/v1/items/find_all?description=foofoo"
     response_items = JSON.parse(response.body)
 
     expect(response).to be_success
