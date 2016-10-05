@@ -12,15 +12,15 @@ RSpec.describe "Invoice item record API" do
   end
 
   it "returns one invoice item" do
-    invoice_item = create(:invoice_item, item_id: 123, invoice_id: 123, quantity: 2, unit_price: 456)
+    invoice_item = create(:invoice_item, quantity: 2, unit_price: 456)
 
     get api_v1_invoice_item_path(invoice_item)
-    response_invoice = JSON.parse(response.body)
+    response_invoice_item = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(invoice_item.item_id).to eq(123)
-    expect(invoice_item.invoice_id).to eq(123)
-    expect(invoice_item.quantity).to eq(2)
-    expect(invoice_item.unit_price).to eq(456)
+    expect(response_invoice_item["item_id"]).to eq(invoice_item.item.id)
+    expect(response_invoice_item["invoice_id"]).to eq(invoice_item.invoice.id)
+    expect(response_invoice_item["quantity"]).to eq(2)
+    expect(response_invoice_item["unit_price"]).to eq(456)
   end
 end

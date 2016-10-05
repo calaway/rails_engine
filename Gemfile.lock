@@ -44,6 +44,7 @@ GEM
     byebug (9.0.6)
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
+    database_cleaner (1.5.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     factory_girl (4.7.0)
@@ -150,6 +151,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   byebug
+  database_cleaner
   factory_girl_rails
   listen (~> 3.0.5)
   pg (~> 0.18)
@@ -160,4 +162,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.12.5
+   1.13.1
