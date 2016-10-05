@@ -11,6 +11,10 @@ class Api::V1::Customers::SearchController < ApplicationController
     render json: Customer.where("#{search_key} = ?", search_value)
   end
 
+  def random
+    render json: Customer.random
+  end
+
   private
   def customer_params
     params.permit(:id,	:first_name,	:last_name,	:created_at,	:updated_at)

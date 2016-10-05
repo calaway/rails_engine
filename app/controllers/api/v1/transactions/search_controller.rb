@@ -11,6 +11,10 @@ class Api::V1::Transactions::SearchController < ApplicationController
     render json: Transaction.where("#{search_key} = ?", search_value)
   end
 
+  def random
+    render json: Transaction.random
+  end
+
   private
   def transaction_params
     params.permit(:id,
