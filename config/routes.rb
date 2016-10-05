@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api do
+  namespace :api, defaults: {format: :json} do
     namespace :v1 do
       namespace :merchants do
         get '/find',     to: "search#show"
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
         get '/find_all', to: "search#index"
         get '/random', to: "search#random"
         get '/:id/transactions', to: "transactions#index", as: "transactions"
+        get '/:id/invoice_items', to: "invoice_items#index", as: "invoice_items"
       end
       namespace :items do
         get '/find',     to: "search#show"
