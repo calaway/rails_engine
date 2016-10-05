@@ -10,6 +10,6 @@ RSpec.describe "Transaction invoice API" do
     invoice = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(invoice.status).to eq("test status")
+    expect(invoice["status"]).to eq("test status")
   end
 end
