@@ -1,14 +1,10 @@
 class Api::V1::Transactions::SearchController < ApplicationController
   def show
-    search_key = transaction_params.keys.first
-    search_value = transaction_params.values.first
-    render json: Transaction.find_by("#{search_key} = ?", search_value)
+    render json: Transaction.find_by(transaction_params)
   end
 
   def index
-    search_key = transaction_params.keys.first
-    search_value = transaction_params.values.first
-    render json: Transaction.where("#{search_key} = ?", search_value)
+    render json: Transaction.where(transaction_params)
   end
 
   def random
