@@ -34,7 +34,7 @@ RSpec.describe "Item find API" do
 
     expect(response).to be_success
     expect(response_item["name"]).to eq("Acorn")
-    expect(response_item["unit_price"]).to eq(100)
+    expect(response_item["unit_price"]).to eq("1.00")
   end
 
   it "finds one item by merchant_id" do

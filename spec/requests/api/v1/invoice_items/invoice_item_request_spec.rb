@@ -21,6 +21,6 @@ RSpec.describe "Invoice item record API" do
     expect(response_invoice_item["item_id"]).to eq(invoice_item.item.id)
     expect(response_invoice_item["invoice_id"]).to eq(invoice_item.invoice.id)
     expect(response_invoice_item["quantity"]).to eq(2)
-    expect(response_invoice_item["unit_price"]).to eq(456)
+    expect(response_invoice_item["unit_price"]).to eq("4.56")
   end
 end

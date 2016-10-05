@@ -41,7 +41,7 @@ RSpec.describe "Invoice item find API" do
     get "/api/v1/invoice_items/find?unit_price=333"
     response_invoice_item = JSON.parse(response.body)
 
-    expect(response_invoice_item["unit_price"]).to eq(333)
+    expect(response_invoice_item["unit_price"]).to eq("3.33")
     expect(response_invoice_item["invoice_id"]).to eq(invoice_item.invoice_id)
   end
 end
