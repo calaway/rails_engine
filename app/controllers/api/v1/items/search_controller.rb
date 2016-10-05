@@ -13,6 +13,7 @@ class Api::V1::Items::SearchController < ApplicationController
 
   private
   def item_params
-    params.permit(:id, :name, :description, :unit_price, :merchant_id, :created_at, :updated_at)
+    strong_params = params.permit(:id, :name, :description, :unit_price, :merchant_id, :created_at, :updated_at)
+    format_params(strong_params)
   end
 end
