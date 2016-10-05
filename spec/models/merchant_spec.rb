@@ -22,7 +22,7 @@ RSpec.describe Merchant, type: :model do
       invoice_item.invoice.update_attribute(:merchant_id, merchant_3.id)
     end
 
-    top_2_merchants = Merchant.top_merchants(2)
+    top_2_merchants = Merchant.top_item_merchants(2)
 
     expect(top_2_merchants.count.count).to eq(2)
     expect(top_2_merchants.first.name).to eq("Bluth Family Store")
