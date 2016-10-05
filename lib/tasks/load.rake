@@ -10,14 +10,14 @@ namespace :load do
 
   desc "TODO"
   task invoices: :environment do
-    CSV.foreach('./data/merchants.csv', headers: true) do |row|
+    CSV.foreach('./data/invoices.csv', headers: true) do |row|
       Invoice.create(row.to_h)
     end
   end
 
   desc "TODO"
   task invoice_items: :environment do
-    CSV.foreach('./data/merchants.csv', headers: true) do |row|
+    CSV.foreach('./data/invoice_items.csv', headers: true) do |row|
       InvoiceItem.create(row.to_h)
     end
   end
@@ -31,14 +31,14 @@ namespace :load do
 
   desc "TODO"
   task transactions: :environment do
-    CSV.foreach('./data/merchants.csv', headers: true) do |row|
+    CSV.foreach('./data/transactions.csv', headers: true) do |row|
       Transaction.create(row.to_h)
     end
   end
 
   desc "TODO"
   task customers: :environment do
-    CSV.foreach('./data/merchants.csv', headers: true) do |row|
+    CSV.foreach('./data/customers.csv', headers: true) do |row|
       Customer.create(row.to_h)
     end
   end
