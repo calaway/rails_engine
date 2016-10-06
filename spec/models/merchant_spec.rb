@@ -26,7 +26,6 @@ RSpec.describe Merchant, type: :model do
 
     invoice_items_1.each do |invoice_item|
       invoice_item.invoice.update_attribute(:merchant_id, merchant_1.id)
-
     end
 
     invoice_items_2.each do |invoice_item|
