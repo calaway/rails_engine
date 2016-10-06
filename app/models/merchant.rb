@@ -11,8 +11,8 @@ class Merchant < ApplicationRecord
     limit(num)
   end
 
-  def revenue_hash
-    {revenue: (revenue / 100.0).to_s }
+  def active_model_serializer
+    MerchantRevenueSerializer
   end
 
   def revenue
