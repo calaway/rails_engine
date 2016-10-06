@@ -11,6 +11,10 @@ class Merchant < ApplicationRecord
     limit(num)
   end
 
+  def revenue_hash
+    {revenue: (revenue / 100.0).to_s }
+  end
+
   def revenue
     successful_transactions.
     joins(:invoice_items).
