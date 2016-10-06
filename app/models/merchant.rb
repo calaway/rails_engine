@@ -11,6 +11,10 @@ class Merchant < ApplicationRecord
     limit(num)
   end
 
+  def self.top_revenue_merchants(num)
+    Merchant.all.sort_by{ |m| m.revenue }.reverse[0..num-1]
+  end
+
   def revenue
     successful_transactions.
     joins(:invoice_items).
