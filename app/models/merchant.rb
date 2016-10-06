@@ -12,7 +12,8 @@ class Merchant < ApplicationRecord
   end
 
   def self.top_revenue_merchants(num)
-    Merchant.all.sort_by{ |m| m.revenue }.reverse[0..num-1]
+    num = num.to_i
+    Merchant.all.sort_by{ |m| m.revenue }.reverse[0..num - 1]
   end
 
   def revenue

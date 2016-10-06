@@ -9,9 +9,9 @@ RSpec.describe "Customer invoices API" do
     create(:invoice)
 
     get "/api/v1/customers/#{customer.id}/invoices"
-    invoices = JSON.parse(response.body)
+    invoices_response = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(invoices.count).to eq(3)
+    expect(invoices_response.count).to eq(3)
   end
 end
