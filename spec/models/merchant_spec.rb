@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Merchant, type: :model do
-
   it "returns revenue for a given merchant" do
     merchant = create(:merchant)
     invoice_items = create_list(:invoice_item, 3, quantity: 3, unit_price: 200)
@@ -13,6 +12,19 @@ RSpec.describe Merchant, type: :model do
     end
 
     expect(merchant.revenue).to eq(1800)
+  end
+
+  it "returns revenue for a given merchant for specific datetime" do
+    merchant = create(:merchant)
+    invoice_items = create_list(:invoice_item, 3, quantity: 3, unit_price: 200)
+    create(:invoice_item, quantity: 1, unit_price: 1000000)
+
+    invoice_items.each do |ii|
+      ii.invoice.update_attribute(:merchant_id, merchant.id)
+      create(:transaction, invoice: ii.invoice, result: "success")
+    end
+
+    expect(merchant.revenue_by_date("2012-03-16 11:55:05")).to eq(1)
   end
 
   it "finds top item selling merchants" do
