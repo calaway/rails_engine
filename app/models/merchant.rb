@@ -27,6 +27,20 @@ class Merchant < ApplicationRecord
     sum('invoice_items.quantity * invoice_items.unit_price')
   end
 
+  def revenue_by_date(date)
+    require "pry"; binding.pry
+    Merchant.find(params[:id]).
+    transactions.
+    where(result: "success").
+
+    joins(:invoice).
+    where(invoices: { created_at: params[:date] }).
+
+    joins(:invoice_items).
+    sum('invoice_items.quantity * invoice_items.unit_price')
+
+  end
+
   def successful_transactions
     transactions.where(result: "success")
   end
