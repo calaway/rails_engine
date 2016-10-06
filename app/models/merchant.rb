@@ -6,7 +6,12 @@ class Merchant < ApplicationRecord
   has_many :transactions, through: :invoices
 
   def self.top_item_merchants(num)
-    Merchant.joins(:transactions).where("transactions.result = 'success'").joins(:invoice_items).group('merchants.id').order("sum(invoice_items.quantity) desc").limit(num)
+    joins(:invoice_items).
+    joins("INNER JOIN transactions ON transactions.invoice_id = invoice_items.invoice_id").
+    where("transactions.result = 'success'").
+    group('merchants.id').
+    order("sum(invoice_items.quantity) desc").
+    limit(num)
   end
 
   # def customers_with_pending_invoices
