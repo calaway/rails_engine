@@ -4,6 +4,10 @@ class Merchant < ApplicationRecord
   has_many :invoice_items, through: :invoices
   has_many :transactions, through: :invoices
 
+  def active_model_serializer
+    MerchantRevenueSerializer
+  end
+
   def self.top_item_merchants(num)
     joins(:invoice_items).
     group('merchants.id').
@@ -11,8 +15,9 @@ class Merchant < ApplicationRecord
     limit(num)
   end
 
-  def active_model_serializer
-    MerchantRevenueSerializer
+  def self.top_revenue_merchants(num)
+    num = num.to_i
+    Merchant.all.sort_by{ |m| m.revenue }.reverse[0..num - 1]
   end
 
   def revenue
