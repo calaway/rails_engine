@@ -24,7 +24,7 @@ RSpec.describe Merchant, type: :model do
       create(:transaction, invoice: ii.invoice, result: "success")
     end
 
-    expect(merchant.revenue_by_date("2012-03-16 11:55:05")).to eq(1)
+    expect(merchant.revenue).to eq(1)
   end
 
   it "finds top item selling merchants" do
