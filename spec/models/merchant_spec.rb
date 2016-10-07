@@ -14,7 +14,7 @@ RSpec.describe Merchant, type: :model do
     expect(merchant.revenue).to eq(1800)
   end
 
-  xit "returns revenue for a given merchant for specific datetime" do
+  it "returns revenue for a given merchant for specific datetime" do
     merchant = create(:merchant)
     invoice_items = create_list(:invoice_item, 3, quantity: 3, unit_price: 200)
     create(:invoice_item, quantity: 1, unit_price: 1000000)
@@ -24,7 +24,7 @@ RSpec.describe Merchant, type: :model do
       create(:transaction, invoice: ii.invoice, result: "success")
     end
 
-    expect(merchant.revenue).to eq(1)
+    expect(merchant.revenue).to eq(1800)
   end
 
   it "finds top item selling merchants" do

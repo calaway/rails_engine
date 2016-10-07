@@ -29,6 +29,14 @@ class Merchant < ApplicationRecord
     sum('invoice_items.quantity * invoice_items.unit_price')
   end
 
+  def revenue_by_date(date)
+    successful_transactions.
+    joins(:invoice).
+    where(invoices: { created_at: date }).
+    joins(:invoice_items).
+    sum('invoice_items.quantity * invoice_items.unit_price')
+  end
+
   def successful_transactions
     transactions.where(result: "success")
   end
