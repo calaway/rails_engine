@@ -14,4 +14,14 @@ class Item < ApplicationRecord
     order("sum(invoice_items.quantity * invoice_items.unit_price) desc").
     limit(num)
   end
+
+  def self.most_items(num)
+    Item.unscoped.
+    joins(:invoice_items).
+    joins("INNER JOIN transactions ON transactions.invoice_id = invoice_items.invoice_id").
+    where("transactions.result = 'success'").
+    group("items.id").
+    order("sum(invoice_items.quantity) desc").
+    limit(num)
+  end
 end
