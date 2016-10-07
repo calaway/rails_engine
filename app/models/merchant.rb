@@ -52,20 +52,6 @@ class Merchant < ApplicationRecord
   end
 
   def customers_with_pending_invoices
-    # SELECT DISTINCT(customers.id), customers.*
-    # FROM customers
-    # INNER JOIN invoices     ON invoices.customer_id    = customer.id
-    # INNER JOIN transactions ON transactions.invoice_id = invoices.id
-    # WHERE invoices.merchant_id = 17
-    # WHERE transactions.result = "failed"
-    #
-    # SELECT "customers".*
-    # FROM "customers"
-    # INNER JOIN "invoices" ON "invoices"."customer_id" = "customers"."id"
-    # INNER JOIN "transactions" ON "transactions"."invoice_id" = "invoices"."id"
-    # WHERE "invoices"."merchant_id" = $1
-    # AND "transactions"."result" = $2  [["merchant_id", 17], ["result", "failed"]]
-
     Customer.
     joins(:transactions).
     select("customers.*").
