@@ -4,6 +4,10 @@ class Merchant < ApplicationRecord
   has_many :invoice_items, through: :invoices
   has_many :transactions, through: :invoices
 
+  def active_model_serializer
+    MerchantRevenueSerializer
+  end
+
   def self.top_item_merchants(num)
     joins(:invoice_items).
     group('merchants.id').
