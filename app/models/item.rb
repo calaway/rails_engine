@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :merchant
 
   def self.most_revenue(num)
+    Item.unscoped.
     joins(:invoice_items).
     joins("INNER JOIN transactions ON transactions.invoice_id = invoice_items.invoice_id").
     where("transactions.result = 'success'").
