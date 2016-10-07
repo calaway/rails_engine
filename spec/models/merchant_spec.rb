@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Merchant, type: :model do
+  it { should have_many(:items) }
+  it { should have_many(:invoices) }
+  it { should have_many(:transactions) }
+  it { should have_many(:invoice_items) }
+
   it "returns revenue for a given merchant" do
     merchant = create(:merchant)
     invoice_items = create_list(:invoice_item, 3, quantity: 3, unit_price: 200)
