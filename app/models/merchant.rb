@@ -50,4 +50,13 @@ class Merchant < ApplicationRecord
     group('customers.id').
     order('count(transactions.*) desc').first
   end
+
+  def customers_with_pending_invoices
+    Customer.
+    joins(:transactions).
+    select("customers.*").
+    distinct.
+    where(invoices: { merchant_id: id }).
+    where(transactions: { result: "failed" })
+  end
 end
