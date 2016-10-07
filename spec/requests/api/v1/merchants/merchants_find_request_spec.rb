@@ -20,24 +20,4 @@ describe "Merchants find API" do
 
     expect(response_merchant["name"]).to eq("Turing Safe Cracking")
   end
-
-  xit "finds one merchant by creation time" do
-    create(:merchant)
-    merchant = create(:merchant, name: "Turing Safe Cracking")
-
-    get "/api/v1/merchants/find?created_at=#{merchant.created_at}"
-    response_merchant = JSON.parse(response.body)
-
-    expect(response_merchant["name"]).to eq("Turing Safe Cracking")
-  end
-
-  xit "finds one merchant by update time" do
-    create(:merchant)
-    merchant = create(:merchant, name: "Turing Safe Cracking")
-
-    get "/api/v1/merchants/find?created_at=#{merchant.updated_at}"
-    response_merchant = JSON.parse(response.body)
-
-    expect(response_merchant["name"]).to eq("Turing Safe Cracking")
-  end
 end

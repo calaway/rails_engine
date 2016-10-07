@@ -1,13 +1,20 @@
 class Merchant < ApplicationRecord
   has_many :items
   has_many :invoices
+  has_many :transactions,  through: :invoices
   has_many :invoice_items, through: :invoices
   has_many :transactions, through: :invoices
 
+  def active_model_serializer
+    MerchantRevenueSerializer
+  end
+
   def self.top_item_merchants(num)
     joins(:invoice_items).
+    joins("INNER JOIN transactions ON transactions.invoice_id = invoice_items.invoice_id").
+    where("transactions.result = 'success'").
     group('merchants.id').
-    order('sum(quantity) desc').
+    order("sum(invoice_items.quantity) desc").
     limit(num)
   end
 

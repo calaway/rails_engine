@@ -30,24 +30,4 @@ describe "Customers find API" do
 
     expect(response_customer["last_name"]).to eq("Turing")
   end
-
-  xit "finds one customer by creation time" do
-    create(:customer)
-    customer = create(:customer, last_name: "Turing")
-
-    get "/api/v1/customers/find?created_at=#{customer.created_at}"
-    response_customer = JSON.parse(response.body)
-
-    expect(response_customer["last_name"]).to eq("Turing")
-  end
-
-  xit "finds one customer by update time" do
-    create(:customer)
-    customer = create(:customer, last_name: "Turing")
-
-    get "/api/v1/customers/find?created_at=#{customer.updated_at}"
-    response_customer = JSON.parse(response.body)
-
-    expect(response_customer["last_name"]).to eq("Turing")
-  end
 end
