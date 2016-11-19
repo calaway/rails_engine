@@ -1,11 +1,11 @@
 # Rails Engine
 
-Rails Engine is a sales engine api platform. This project utilizes Ruby on Rails, ActiveRecord, and SQL to build a JSON API which exposes and serves up data from the sales engine data schema.
+Rails Engine is a sales engine api platform. This project utilizes Ruby on Rails, ActiveRecord, and SQL to build a JSON API that exposes and serves up data from the sales engine database, which is comprised of six interconnected resources.
 
 ![schema graphic](https://raw.githubusercontent.com/calaway/rails_engine/master/data/schema.png)
 
 ## Project Highlights
-* Uses single-responsibility controllers to provide a well-designed and versioned API. This is easy to see from the [routes.rb file](https://github.com/calaway/rails_engine/blob/master/config/routes.rb)
+* Uses single-responsibility controllers to provide a well-designed and versioned API. This easily seen from the [routes.rb file](https://github.com/calaway/rails_engine/blob/master/config/routes.rb).
 * Uses controller tests to drive the design.
 * Uses ActiveRecord and SQL to perform complex business inteligence.
 * Serves data formatted as JSON utilizing serializers to tailor responses accordingly.
@@ -58,6 +58,6 @@ Rails Engine is a sales engine api platform. This project utilizes Ruby on Rails
 * Customers
  * `GET /api/v1/customers/:id/favorite_merchant` returns a merchant where the customer has conducted the most successful transactions
 
-## Version info
+### Version info
 * Ruby - 2.3.0
 * Rails - 5.0.0.1
