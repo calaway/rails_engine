@@ -43,7 +43,7 @@ Rails Engine is a sales engine api platform. This project utilizes Ruby on Rails
  * `GET /api/v1/customers/:id/invoices` returns a collection of associated invoices
  * `GET /api/v1/customers/:id/transactions` returns a collection of associated transactions
 
- ## API Business Intelligence Endpoints
+## API Business Intelligence Endpoints
 * All Merchants
  * `GET /api/v1/merchants/most_revenue?quantity=x` returns the top x merchants ranked by total revenue
  * `GET /api/v1/merchants/most_items?quantity=x` returns the top x merchants ranked by total number of items sold
