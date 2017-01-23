@@ -1,6 +1,6 @@
 # Rails Engine
 
-Rails Engine is a sales engine api platform. This project utilizes Ruby on Rails, ActiveRecord, and SQL to build a JSON API that exposes and serves up data from the sales engine database, which is comprised of six interconnected resources.
+Rails Engine is a sales engine API platform. This project utilizes Ruby on Rails, ActiveRecord, and SQL to construct a JSON API that exposes and serves up data from sales relational database comprised of six interconnected resources.
 
 ![schema graphic](https://raw.githubusercontent.com/calaway/rails_engine/master/data/schema.png)
 
