@@ -1,4 +1,4 @@
-class Api::V1::Invoices::SearchController < ApplicationController
+class Api::V1::Invoices::SearchController < ApiController
   def show
     render json: Invoice.find_by(invoice_params)
   end

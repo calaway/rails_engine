@@ -1,4 +1,4 @@
-class Api::V1::TransactionsController < ApplicationController
+class Api::V1::TransactionsController < ApiController
   def index
     render json: Transaction.all
   end

@@ -1,4 +1,4 @@
-class Api::V1::Merchants::SearchController < ApplicationController
+class Api::V1::Merchants::SearchController < ApiController
   def show
     search_key = merchant_params.keys.first
     search_value = merchant_params.values.first

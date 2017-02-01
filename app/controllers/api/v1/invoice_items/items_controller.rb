@@ -1,4 +1,4 @@
-class Api::V1::InvoiceItems::ItemsController < ApplicationController
+class Api::V1::InvoiceItems::ItemsController < ApiController
   def show
     render json: InvoiceItem.find(params[:id]).item
   end
